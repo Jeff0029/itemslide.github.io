@@ -21,7 +21,7 @@ var Animations = function(carousel) {
         else {
             isBoundary = false;
         }
-        console.log(noChangeActive);
+
         if (!noChangeActive) {
         	changeActiveSlideTo(i);
         }
