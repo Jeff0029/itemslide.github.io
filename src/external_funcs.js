@@ -20,11 +20,11 @@ module.exports = {
 
             //Update some sizes
             if (vars.parent_width) {
-                $el.children().width($el.parent().outerWidth(true)); //resize the slides
+                $el.children().width($el.parent().outerWidthZepto(true)); //resize the slides
             }
 
             if (!carousel.options.disable_autowidth) {
-                $el.css("width", $el.children().length * $el.children().outerWidth(true) + 10); //SET WIDTH
+                $el.css("width", $el.children().length * $el.children().outerWidthZepto(true) + 10); //SET WIDTH
             }
 
             vars.slideHeight = $el.children().height();

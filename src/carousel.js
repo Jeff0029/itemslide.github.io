@@ -13,7 +13,7 @@ module.exports = {
         _this.options = options;
 
         if (_this.options.parent_width) {
-            element.children().width(element.parent().outerWidth(true)); //resize the slides
+            element.children().width(element.parent().outerWidthZepto(true)); //resize the slides
         }
 
         //Setting some css to avoid problems on touch devices
@@ -26,7 +26,7 @@ module.exports = {
         });
 
         if (!_this.options.disable_autowidth) {
-            element.css("width", element.children().length * element.children().outerWidth(true) + 10); //SET WIDTH
+            element.css("width", element.children().length * element.children().outerWidthZepto(true) + 10); //SET WIDTH
         }
         //Note: To add vertical scrolling just set width to slides.children().width()
 
