@@ -23,7 +23,7 @@ var Animations = function(carousel) {
         else {
             isBoundary = false;
         }
-        console.log(noChangeActive);
+
         if (!noChangeActive) {
         	changeActiveSlideTo(i);
         }
@@ -66,8 +66,8 @@ var Animations = function(carousel) {
 
         for (var i = 0; i < slides.children().length; i++) {
 
-            if (slides.children().outerWidth(true) * i + slides.children().outerWidth(true) / 2 -
-                slides.children().outerWidth(true) * options.pan_threshold * vars.direction - getPositionByIndex(0) > x) {
+            if (slides.children().outerWidthZepto(true) * i + slides.children().outerWidthZepto(true) / 2 -
+                slides.children().outerWidthZepto(true) * options.pan_threshold * vars.direction - getPositionByIndex(0) > x) {
 
                 if (!options.one_item)
                     return i;
@@ -104,7 +104,7 @@ var Animations = function(carousel) {
     }
 
     function getPositionByIndex (i) {
-        return -(i * slides.children().outerWidth(true) - ((slides.parent().outerWidth(true) - slides.children().outerWidth(true)) / 2))
+        return -(i * slides.children().outerWidthZepto(true) - ((slides.parent().outerWidthZepto(true) - slides.children().outerWidthZepto(true)) / 2))
     }
 
     function animationRepeat() {
@@ -181,7 +181,7 @@ global.clamp = function (min, max, value) {
 global.getCurrentTotalWidth = function (inSlides) { // Returns the total number of pixels for each items
 	var width = 0;
 	inSlides.children().each(function() {
-	    width += $(this).outerWidth( true );
+	    width += $(this).outerWidthZepto( true );
 	});
 	return width;
 };
@@ -203,7 +203,7 @@ module.exports = {
         _this.options = options;
 
         if (_this.options.parent_width) {
-            element.children().width(element.parent().outerWidth(true)); //resize the slides
+            element.children().width(element.parent().outerWidthZepto(true)); //resize the slides
         }
 
         //Setting some css to avoid problems on touch devices
@@ -216,7 +216,7 @@ module.exports = {
         });
 
         if (!_this.options.disable_autowidth) {
-            element.css("width", element.children().length * element.children().outerWidth(true) + 10); //SET WIDTH
+            element.css("width", element.children().length * element.children().outerWidthZepto(true) + 10); //SET WIDTH
         }
         //Note: To add vertical scrolling just set width to slides.children().width()
 
@@ -277,11 +277,11 @@ module.exports = {
 
             //Update some sizes
             if (vars.parent_width) {
-                $el.children().width($el.parent().outerWidth(true)); //resize the slides
+                $el.children().width($el.parent().outerWidthZepto(true)); //resize the slides
             }
 
             if (!carousel.options.disable_autowidth) {
-                $el.css("width", $el.children().length * $el.children().outerWidth(true) + 10); //SET WIDTH
+                $el.css("width", $el.children().length * $el.children().outerWidthZepto(true) + 10); //SET WIDTH
             }
 
             vars.slideHeight = $el.children().height();
@@ -730,7 +730,7 @@ if (typeof Object.create !== "function") {
 }
 
 // Stuff to add for compatibility with Zepto
-$.fn.outerWidth = function () {
+$.fn.outerWidthZepto = function () {
     var el = $(this)[0];
     var width = el.offsetWidth;
     var style = getComputedStyle(el);
